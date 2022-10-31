@@ -2961,6 +2961,7 @@
                OutfitConfig
                $oc
                {$oc recompose}})
+      #ifndef HX_WII
          (editor
             (resource_file
                file
@@ -3286,7 +3287,9 @@
                (help
                   "this utility will assist in automating setup of an outfit")))
          (resource_file '')
-         (texture_folder_name ''))))
+         (texture_folder_name ''))
+      #else)
+      #endif)
 (FileMerger
    (types
       (main

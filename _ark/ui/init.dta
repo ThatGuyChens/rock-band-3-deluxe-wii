@@ -1,15 +1,18 @@
+#ifndef HX_WII
+;not available on wii yet
 ;sets default highway. must set variable to TRUE, name your selected texture
 ;list can be found in _ark\ui\track\highways\highways.dta
 {set $highway none}
-
+#endif
 ;sets default spotlight (any instrument max multiplier).
 ;list can be found in _ark\ui\track\spotlights\spotlights.dta
 {set $spotlight none}
-
+#ifndef HX_WII
+;not available on wii yet
 ;sets default emissive (in overdrive texture).
 ;list can be found in _ark\ui\track\emissives\emissives.dta
 {set $emissive none}
-
+#endif
 ;sets default keyboard track colors.
 ;list can be found in _ark\ui\track\keyboards\keyboards.dta
 {set $keyboard none}
@@ -30,15 +33,17 @@
 
 ;set default venue fps.
 {set $emulatefps 30}
-
+#ifndef HX_WII
+;these are mirrored on wii, so they are disabled for that platform temporarily
 ;animated texture name. must have ran "enable_animation.bat" first. current animated highways are
 ;rb4_new rb4effect5_color4 rb4effect6_color7 rb4effect4_color1 rb4effect9_color1
 {set $animatedhighwayname none}
 
+;these don't animate on wii, so they are disabled for that platform tenoirarily
 ;animated texture name. must have ran "enable_animation.bat" first. current animated gems are
 ;rb4
 {set $animatedgemname none}
-
+#endif
 ;controls animated texture toggles. must have ran "enable_animation.bat" first. current animated smashers are
 ;shiny starlight
 {set $animatedsmashername none}
@@ -158,6 +163,9 @@
 #include main/main_hub.dta
 #include main/main_dialogs.dta
 #include loading/loading.dta
+#ifdef HX_WII
+#include wii_friend_list/wii_friend_list.dta
+#endif
 #include overshell/overshell.dta
 #include endgame/endgame.dta
 #include endgame/complete.dta
@@ -171,6 +179,9 @@
 #include calibration/calibration.dta
 #include practice/training.dta
 #include global/saveload.dta
+#ifdef HX_WII
+#include global/wiispeak_icon.dta
+#endif
 #include net_delegator.dta
 #include store/store.dta
 #include store/store_info.dta
@@ -181,7 +192,22 @@
 #include art_maker/patchcreator.dta
 #include character_creator/character_creator.dta
 #include trainers/training.dta
+#ifndef HX_WII
 #include audition/audition.dta
+#else
+#ifdef WIISPEAK_SUPPORT
+#include options/options_wiispeak.dta
+#endif
+#include channel_install/channel_install.dta
+#include channel_routing.dta
+#include wiiprofile/wiiprofile.dta
+#include matchmaking/invitations_wii.dta
+#endif
+#ifdef WIISPEAK_SUPPORT
+#ifdef HX_PC
+#include options/options_wiispeak.dta
+#endif
+#endif
 #ifndef _SHIP
 #include dev_only/selvenue.dta
 #include framerate/frame_rate.dta

@@ -322,6 +322,7 @@
                {cheat_display
                   show
                   "Free camera: off"}}}}}}
+#ifndef HX_WII
 {func
    audition_cycle_free_camera
    {do
@@ -399,6 +400,7 @@
                {== $free_cam.state 8}
                {! $changed_cam}}
             {$world delete_free_cam}}}}}
+#endif
 {func
    toggle_crowd_meter
    {if
@@ -1273,6 +1275,7 @@
             "Prefab uses profile patches"}
          {sprint
             "Prefab uses its own patches"}}}}
+#ifndef HX_WII
 {func
    save_prefab
    ($name)
@@ -1283,16 +1286,27 @@
          {sprint
             {customize_panel save_prefab $name}}}
       {customize_panel take_portrait}}}
+#endif
 {func
    cheat_prefab_save_from_closet
    {if
+   #ifdef HX_WII
+      {&&
+         {prefab_is_customizable}
+         {customize_panel is_up}}
+   #else
       {customize_panel is_up}
+   #endif
       {cheat_display
          show
          {sprint
+         #ifdef HX_WII
+            "Attempting to save prefab, look for notifies!"}}
+      {customize_panel save_prefab}
+      #else
             {customize_panel
                save_prefab
-               ""}}}
+               ""}
       {customize_panel take_portrait}}}
 {func
    cheat_prefab_take_portrait
@@ -1305,6 +1319,7 @@
          show
          {sprint
             "Portrait Taken"}}}}
+#ifndef HX_WII
 {func
    cheat_skip_membership_check
    {set

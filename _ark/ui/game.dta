@@ -18,6 +18,7 @@
    (file
       "")
    (disable_pause_ms 2000)
+#ifndef HX_WII
    (audition_jump_back_ms 12000)
    (audition_jump_forward_ms 30000)
    (audition_jump_end_buffer_ms 5000)
@@ -25,6 +26,7 @@
       (0 15 30 45 60))
    (audition_cam_toggle
       {audition_cycle_free_camera})
+#endif
    (reset
       {active_events_parser
          add_sink
@@ -106,7 +108,9 @@
             fade.anim}
          set_frame
          0}
+      #ifndef HX_WII
       {stagekit_reset}
+      #endif
       {beatmatch
          foreach_active_player
          $p
@@ -308,6 +312,8 @@
             unload}})}
 #define GAME_SCREEN_PANELS
 (game world_panel song_movie_panel coop_track_panel sync_audio_net_panel)
+#define GAME_SCREEN_PANELS_NO_TRACK
+(world_panel game sync_audio_net_panel)
 {new
    BandScreen
    game_screen
@@ -383,7 +389,11 @@
 {new
    BandScreen
    restart_game_screen
+#ifdef HX_WII
+   (panels GAME_SCREEN_PANELS_NO_TRACK sync_audio_net_screen_panel)
+#else
    (panels GAME_SCREEN_PANELS sync_audio_net_screen_panel)
+#endif
    (load_panels
       {overshell set_active_status kOvershellInactive}
       {$this set_showing FALSE})
@@ -534,6 +544,12 @@
 {new
    UIPanel
    mydta_start_in_game_panel
+#ifdef HX_WII
+   (load
+      {content_mgr start_refresh})
+   (is_loaded
+      {content_mgr refresh_done})
+#else
    (state begin)
    (enter
       {set
@@ -566,7 +582,25 @@
                   [state]
                   done}
                {{ui current_screen}
-                  ready_for_game}})})}
+                  ready_for_game}})})
+#endif}
+#ifdef HX_WII
+{new
+   BandScreen
+   mydta_start_in_game_screen
+   (panels mydta_start_in_game_panel)
+   (TRANSITION_COMPLETE_MSG
+      {ui goto_screen preloading_screen})}
+{new
+   BandScreen
+   mydta_start_practice_in_game_screen
+   (panels mydta_start_in_game_panel)
+   (TRANSITION_COMPLETE_MSG
+      {if_else
+         {== $venue BLACK_VENUE}
+         {ui goto_screen practice_black_game_screen}
+         {ui goto_screen practice_game_screen}})}
+#endif
 {new
    BandScreen
    mydta_start_in_game_screen
