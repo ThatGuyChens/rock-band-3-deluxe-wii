@@ -27,7 +27,7 @@ jobs:
           name: RB3DX-Base-Xbox
           path: _build/xbox
           
-build_wii_raw:
+  build_wii_raw:
     runs-on: ubuntu-latest
 
     steps:
