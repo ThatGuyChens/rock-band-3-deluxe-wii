@@ -1,1 +1,5 @@
+#ifdef HX_WII
+"Build: 100924_C"
+#else
 "Build: 110902"
+#endif
