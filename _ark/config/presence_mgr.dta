@@ -1,6 +1,8 @@
 (presence_modes
+#ifndef HX_WII
    (in_audition
       (gamemode audition))
+#endif
    (in_game
       (in_game))
    (customize_band
@@ -34,7 +36,9 @@
       (override_play_mode CONTEXT_PLAY_MODE_CV_PLAYING_DRUMS))
    (main_menu))
 (presence_mode_contexts
+#ifndef HX_WII
    (in_audition CONTEXT_PRESENCE_PM_NOT_INVOLVED CONTEXT_PRESENCE_PM_NOT_INVOLVED)
+#endif
    (in_game CONTEXT_PRESENCE_PM_IN_GAME CONTEXT_PRESENCE_PM_NOT_INVOLVED)
    (customize_band CONTEXT_PRESENCE_PM_CUSTOMIZE_BAND CONTEXT_PRESENCE_PM_NOT_INVOLVED)
    (create_character CONTEXT_PRESENCE_PM_CREATE_CHARACTER CONTEXT_PRESENCE_PM_NOT_INVOLVED)
