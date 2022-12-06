@@ -11,7 +11,8 @@ _xenia/gen/*.ark
 _xenia/gen/*.hdr
 _build_rpcs3.bat
 _build/ps3/USRDIR/band_s.elf
-_build/wii/
+_build/wii/*.ark
+_build/wii/*.hdr
 rb3_plus
 rbdx_animated_textures
 _xenia/cache/*
