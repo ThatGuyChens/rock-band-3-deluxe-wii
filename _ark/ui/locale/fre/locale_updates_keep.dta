@@ -791,6 +791,7 @@
 (os_keyboard "Choix du Clavier")
 (os_scrsvr "économiseur d'écran")
 (os_setcol "Réglages des Couleurs")
+(mod_wiios "Couleur Interface Wii")
 (os_videoconfirm "Les vidéos arrière-plan ne sont pas stable. Ne mettez pas en pause, en jeu si activé. Consultez le réper. RB3DX readme pour apprendre plus sur les vidéo d'arrière-plan.")
 (os_nomvconfirm "Ce modificateur ne marche pas en Mode Tous Instruments actuellement.")
 (os_trkthm "Thèmes de la Piste")
