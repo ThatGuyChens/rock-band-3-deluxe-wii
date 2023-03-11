@@ -1,4 +1,4 @@
-git pull https://github.com/jnackmclain/rock-band-3-deluxe wii
+rem git pull https://github.com/thatguychens/rock-band-3-deluxe-wii
 copy "%~dp0\_build\wii_rebuild_files\main_wii.hdr" "%~dp0\_build\wii"
 copy "%~dp0\_build\wii_rebuild_files\main_wii_10.ark" "%~dp0\_build\wii"
 "%~dp0dependencies/arkhelper" patchcreator -a "%~dp0\_ark" -o "%~dp0\_build\wii" "%~dp0\_build\wii\main_wii.hdr"
